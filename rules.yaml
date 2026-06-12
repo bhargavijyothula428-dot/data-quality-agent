@@ -1,0 +1,10 @@
+validation_rules:
+  - column: "user_id"
+    check: "not_null"
+  - column: "age"
+    check: "min_max"
+    min: 0
+    max: 120
+  - column: "email"
+    check: "contains"
+    value: "@"

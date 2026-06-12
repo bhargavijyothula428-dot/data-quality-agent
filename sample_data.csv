@@ -1,0 +1,4 @@
+user_id,age,email
+1,25,alice@example.com
+,140,bob_at_example.com
+3,-5,charlie@example.com
