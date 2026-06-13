@@ -1,8 +1,11 @@
 import os
 import google.generativeai as genai
+import streamlit as st
 
-# Configure the free Gemini client
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
+# This checks your Streamlit Secrets FIRST, then falls back to local environment
+api_key = st.secrets.get("GEMINI_API_KEY", os.environ.get("GEMINI_API_KEY"))
+
+genai.configure(api_key=api_key)
 
 def generate_remediation(failed_reports):
     """Sends bad data profiles to Gemini to build code fixes and text logs."""
