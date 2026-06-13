@@ -55,8 +55,9 @@ with col2:
                 
                 try:
                     # B. Load the interactive rules text box as a dictionary
-                    rules_dict = yaml.safe_load(rules_text)
-                    rules = rules_dict.get('rules', [])
+                    rules_dict = yaml.safe_load(rules_text) or {}
+# This looks for BOTH naming formats so your code never breaks:
+                    rules = rules_dict.get('validation_rules', rules_dict.get('rules', []))
                     
                     # Read into dataframe to print the visual data table preview
                     df = pd.read_csv(data_path)
